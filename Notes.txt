@@ -1,0 +1,19 @@
+
+> 1 scenario: multiple tasks > 
+
+Tasks example:
+1. Lightning app creation   
+2. Custom object, Custom LWC   
+3. Integration: data from csv, API integration (security: private endpoint, bearer token)
+    * Test Classes not mandatory   
+4. Create trigger (has to be bulkified)   
+5. Screen flow (No process builder/workflow)   
+6. Send email using email templates   
+7. Reporting & dashboards
+
+
+Comment best practices.
+make Class and test class workable.
+Trigger bulkified practices
+Previous source code check
+
