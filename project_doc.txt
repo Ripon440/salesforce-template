@@ -1,0 +1,15 @@
+Who will be using this platform/end-users?
+
+Task distribution/User stories/Usecases
+
+Schema design/Objects/fields
+
+User Interface design
+
+Functional Workflow
+
+Tests/reports (if any)
+
+Instruction for end-users
+
+Limitations/Scope of improvement

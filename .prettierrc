@@ -9,5 +9,7 @@
       "files": "*.{cmp,page,component}",
       "options": { "parser": "html" }
     }
-  ]
+  ],
+  "tabWidth": 4,
+  "printWidth": 150
 }
