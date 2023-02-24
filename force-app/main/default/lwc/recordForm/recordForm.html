@@ -1,0 +1,43 @@
+<template>
+  <lightning-record-form
+    record-id={recordId}
+    object-api-name={objectApiName}
+    fields={recordFields}
+    layout-type="Full"
+    columns="2"
+    mode={mode}
+    onsubmit={handleSubmit}
+    onsuccess={handleSuccess}
+    onerror={handleError}
+  >
+  </lightning-record-form>
+  <p>Name: {name}</p>
+
+  <div class="slds-align_absolute-center">
+    <!-- Neutral variant (default) -->
+    <lightning-button
+      label="Edit"
+      title="Non-primary action"
+      onclick={handleEdit}
+      class="slds-m-left_x-small"
+    ></lightning-button>
+
+    <!-- Brand variant: Identifies the primary action in a group of buttons -->
+    <lightning-button
+      variant="brand"
+      label="View"
+      title="Primary action"
+      onclick={handleView}
+      class="slds-m-left_x-small"
+    ></lightning-button>
+
+    <!-- Brand variant: Identifies the primary action in a group of buttons -->
+    <lightning-button
+      variant="brand"
+      label="Read Only"
+      title="Primary action"
+      onclick={handleReadOnly}
+      class="slds-m-left_x-small"
+    ></lightning-button>
+  </div>
+</template>
