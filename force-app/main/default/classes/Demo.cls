@@ -1,21 +1,26 @@
 public with sharing class Demo {
     @AuraEnabled
     public static ResponseWrapper getScheduleRequest(String scheduleReqId) {
-        // get the schedule request
-        SObjectAccessDecision securityDecision = Security.stripInaccessible(
-            AccessType.READABLE,
-            [
-                SELECT Id, Name
-                FROM Scheduled_Request__c
-                WHERE Id = :scheduleReqId
-            ]
-        );
+        try {
+            // get the schedule request using strip inaccessible
+            SObjectAccessDecision securityDecision = Security.stripInaccessible(
+                AccessType.READABLE,
+                [
+                    SELECT Id, Name
+                    FROM Scheduled_Request__c
+                    WHERE Id = :scheduleReqId
+                ]
+            );
 
-        if (securityDecision.getRecords().size() > 0) {
-            return new ResponseWrapper(true, securityDecision.getRecords()[0]);
+            // check if any accessible records were returned
+            if (securityDecision.getRecords().size() > 0) {
+                return new ResponseWrapper(true, securityDecision.getRecords()[0]);
+            }
+
+            return new ResponseWrapper(false, 'No schedule request record found!');
+        } catch (Exception exp) {
+            return new ResponseWrapper(false, exp.getMessage());
         }
-
-        return new ResponseWrapper(false, 'No schedule request record found!');
     }
 
     @AuraEnabled
@@ -27,7 +32,7 @@ public with sharing class Demo {
             );
             insert securityDecision.getRecords();
 
-            return new ResponseWrapper(true, finalUpdatedScheduledRequest);
+            return new ResponseWrapper(true, securityDecision.getRecords()[0]);
         } catch (Exception exp) {
             return new ResponseWrapper(false, exp.getMessage());
         }
